@@ -1,0 +1,37 @@
+<project name="TECS" basedir=".">
+  <property name="src" location="." />
+  <property name="build" location="InstallDir/bin/classes" />
+  <property name="dist" location="InstallDir/bin/lib" />
+  
+  <target name="init">
+    <delete dir="${build}" />
+    <delete dir="${dist}" />
+    <mkdir dir="${build}" />
+    <mkdir dir="${dist}" />
+  </target>
+  
+  <target name="compile" depends="init">
+    <javac srcdir="HackPackageSource" destdir="${build}" classpath="${build}"/>
+    <javac srcdir="HackGUIPackageSource" destdir="${build}" classpath="${build}"/>
+    <javac srcdir="CompilersPackageSource" destdir="${build}" classpath="${build}"/>
+    <javac srcdir="SimulatorsPackageSource" destdir="${build}" classpath="${build}"/>
+    <javac srcdir="SimulatorsGUIPackageSource" destdir="${build}" classpath="${build}"/>
+    <javac srcdir="BuiltInChipsSource" destdir="InstallDir" classpath="${build}"/>
+    <javac srcdir="BuiltInVMCodeSource" destdir="InstallDir" classpath="${build}"/>
+    <javac srcdir="MainClassesSource" destdir="${build}" classpath="${build}"/>
+  </target>
+  
+  <target name="jar" depends="compile">
+    <jar destfile="${dist}/Hack.jar" basedir="${build}/Hack" />
+    <jar destfile="${dist}/HackGUI.jar" basedir="${build}/HackGUI" />
+    <jar destfile="${dist}/Compilers.jar" basedir="${build}/Hack" />
+    <jar destfile="${dist}/Simulators.jar" basedir="${build}/Hack" />
+    <jar destfile="${dist}/SimulatorsGUI.jar" basedir="${build}/SimulatorsGUI" />
+    <jar destfile="InstallDir/Run.jar" basedir="${build}" manifest="MANIFEST.MF" />
+  </target>
+  
+  <target name="build" depends="jar">
+    
+  </target>
+  
+</project>
