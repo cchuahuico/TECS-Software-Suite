@@ -63,6 +63,7 @@ public class TextFileComponent extends JPanel implements TextFileGUI {
         listeners = new Vector();
         rowsVector = new Vector();
         textFileTable = new WideTable(model, 1000);
+        textFileTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         textFileTable.setDefaultRenderer(textFileTable.getColumnClass(0), getCellRenderer());
         textFileTable.setTableHeader(null);
         highlightedLines = new HashSet();
