@@ -17,22 +17,22 @@ mark your changes clearly, for the benefit of others.
 Contents
 --------
 
-1. Compilation Instructions
+1. Compilation and Running Instructions
 2. The Chip API for Implementation of Chips in Java
 3. The VMCode API for Implementation of VM Functions/Classes in Java
 
 
 Compilation and Running Instructions:
--------------------------------------------------
+-------------------------------------
 
 1. Install Apache Ant: http://ant.apache.org/
 2. Download the whole project
-3. Run ant build from your terminal
-4. Navigate to InstallDir folder
-5. Double click Run.jar to start the HardwareSimulator
+3. Run **ant build** from your terminal
+4. Navigate to **InstallDir** folder
+5. Double click **Run.jar** to start the HardwareSimulator
 
-Note: You can also open your terminal and run HardwareSimulator.bat (Windows) to
-start the HardwareSimulator
+*Note: You can also open your terminal and run HardwareSimulator.bat (Windows) to
+start the HardwareSimulator*
 
 The Chip API for Implementation of Chips in Java
 ------------------------------------------------
