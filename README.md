@@ -28,14 +28,16 @@ Contents
 Compilation and Running Instructions:
 -------------------------------------
 
+Make sure you have the JDK installed if you're building the project.
+
 1. Install Apache Ant: http://ant.apache.org/
 2. Download/clone the whole project
 3. Run **ant build** from your terminal
 4. Navigate to **InstallDir** folder
-5. Double click **Run.jar** to start the HardwareSimulator
+5. Run appropriate .bat(Windows)/.sh(*nix) file to start application
 
-*Note: You can also open your terminal and run HardwareSimulator.bat (Windows) to
-start the HardwareSimulator*
+*Note: For Windows users, you might have to open a command prompt first and run
+the .bat file from there rather than double clicking the .bat file*
 
 The Chip API for Implementation of Chips in Java
 ------------------------------------------------

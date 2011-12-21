@@ -27,7 +27,6 @@
     <jar destfile="${dist}/Compilers.jar" basedir="${build}/Hack" />
     <jar destfile="${dist}/Simulators.jar" basedir="${build}/Hack" />
     <jar destfile="${dist}/SimulatorsGUI.jar" basedir="${build}/SimulatorsGUI" />
-    <jar destfile="InstallDir/Run.jar" basedir="${build}" manifest="MANIFEST.MF" />
   </target>
   
   <target name="build" depends="jar">
