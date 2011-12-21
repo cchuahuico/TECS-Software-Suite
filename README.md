@@ -1,3 +1,6 @@
+LICENSE
+-------
+
 The contents of this file are subject to the GNU General Public License
 (GPL) Version 2 or later (the "License"); you may not use this file except
 in compliance with the License. You may obtain a copy of the License at
@@ -26,7 +29,7 @@ Compilation and Running Instructions:
 -------------------------------------
 
 1. Install Apache Ant: http://ant.apache.org/
-2. Download the whole project
+2. Download/clone the whole project
 3. Run **ant build** from your terminal
 4. Navigate to **InstallDir** folder
 5. Double click **Run.jar** to start the HardwareSimulator
@@ -67,10 +70,11 @@ Software Suite are located under the InstallDir/builtInChips directory).
 The chip class should extend (either directly or indirectly) the
 Hack.Gates.BuiltInGate class and may overwrite any of the following three
 methods (which by default do nothing):
-void clockUp() - called when the clock goes up (useful for clocked chips)
-void clockDown() - called when the clock goes down (useful for clocked chips)
-void reCompute() - called whenever any of the input pins changes
-                   (useful for combinatorial chips)
+
+void clockUp() - called when the clock goes up (useful for clocked chips)  
+void clockDown() - called when the clock goes down (useful for clocked chips)  
+void reCompute() - called whenever any of the input pins changes (useful for combinatorial chips)   
+                   
 Required initialization code may be placed in a constructor accepting no
 arguments and any number of data members may be defined.
 
@@ -156,49 +160,53 @@ under the InstallDir/builtInVMCode directory).
 A Java static method which implements a VM function may communiate with the
 Virual Machine using any of the following static methods which it inherits from
 Hack.VMEmulator.BuiltInVMClass:
-short readMemory(int address) - returns the value stored in the VM
-                                memory at the given address (the address
-                                argument is an int and not a short for
-                                convenience but may only be in the one of the
-                                ranges HEAP_START_ADDRESS - HEAP_END_ADDRESS or
-                                SCREEN_START_ADDRESS - SCREEN_END_ADDRESS
-                                (these are provided as static final constants
-                                of the Hack.VMEmulator.BuiltInVMClass).
-void writeMemory(int address, int value) - changes the value stored in the VM
-                                           memory at the given address (the
-                                           value is cast to short and the
-                                           address must be legal - see above).
-                                           If data flow animation is on, the
-                                           change in the VM memory will be
-                                           animated.
-short callFunction(String functionName,
-                   short[] params) - Calls the named VM function (which may
-                                     be either be implemented in a normal .vm
-                                     files or in Java using the VMCode API)
-                                     with the given parameters. The return
-                                     from the function is returned. To allow
-                                     for maximum modularity, this function
-                                     should be used for all calls to VM
-                                     functions not implemented by the current
-                                     class, to ensure that the implementation
-                                     currently used by the VM Emulator (which
-                                     may or may not be implemented in Java) is
-                                     called.
-short callFunction(String functionName,
-                   short param1, ...) - For convenience, versions of the
-                                        callFunction method are supplied for
-                                        calling VM functions accepting 0-4
-                                        arguments without the need to allocate
-                                        an array of parameters.
-void infiniteLoop(String message) - Used to halt the VM program (this is the
-                                    function called by the supplied Java
-                                    implementation of the Sys.halt function
-                                    of the Jack OS). If the optional message
-                                    is provided (non-null) then a pop-up
-                                    window is opened to display it.
-                                    * Important: A Java static method
-                                    implementing a VM function SHOULD NOT enter
-                                    a blocking infinite loop *
+
+    short readMemory(int address) - returns the value stored in the VM  
+                                    memory at the given address (the address  
+                                    argument is an int and not a short for  
+                                    convenience but may only be in the one of the  
+                                    ranges HEAP_START_ADDRESS - HEAP_END_ADDRESS or  
+                                    SCREEN_START_ADDRESS - SCREEN_END_ADDRESS  
+                                    of the Hack.VMEmulator.BuiltInVMClass).  
+                                
+    void writeMemory(int address, int value) - changes the value stored in the VM
+                                               memory at the given address (the
+                                               value is cast to short and the
+                                               address must be legal - see above).
+                                               If data flow animation is on, the
+                                               change in the VM memory will be
+                                               animated.
+                                           
+    short callFunction(String functionName,
+                       short[] params) - Calls the named VM function (which may
+                                         be either be implemented in a normal .vm
+                                         files or in Java using the VMCode API)
+                                         with the given parameters. The return
+                                         from the function is returned. To allow
+                                         for maximum modularity, this function
+                                         should be used for all calls to VM
+                                         functions not implemented by the current
+                                         class, to ensure that the implementation
+                                         currently used by the VM Emulator (which
+                                         may or may not be implemented in Java) is
+                                         called.
+                                     
+    short callFunction(String functionName,
+                       short param1, ...) - For convenience, versions of the
+                                            callFunction method are supplied for
+                                            calling VM functions accepting 0-4
+                                            arguments without the need to allocate
+                                            an array of parameters.
+                                        
+    void infiniteLoop(String message) - Used to halt the VM program (this is the
+                                        function called by the supplied Java
+                                        implementation of the Sys.halt function
+                                        of the Jack OS). If the optional message
+                                        is provided (non-null) then a pop-up
+                                        window is opened to display it.
+                                        * Important: A Java static method
+                                        implementing a VM function SHOULD NOT enter
+                                        a blocking infinite loop *
 
 A function calling any of the aforementioned static methods must be declared
 to throw Hack.VMEmulator.TerminateVMProgramThrowable. An instance of this
@@ -208,15 +216,16 @@ throwable may be caught by the calling method but must be rethrown.
 
 For convenience, the following constants are provided by the
 Hack.VMEmulator.BuiltInVMClass for use by the classes which extend it:
-short SCREEN_START_ADDRESS
-short SCREEN_END_ADDRESS
-int SCREEN_WIDTH
-int SCREEN_HEIGHT
-short HEAP_START_ADDRESS
-short HEAP_END_ADDRESS
-short KEYBOARD_ADDRESS
-short NEWLINE_KEY
-short BACKSPACE_KEY
+
+short SCREEN_START_ADDRESS  
+short SCREEN_END_ADDRESS  
+int SCREEN_WIDTH  
+int SCREEN_HEIGHT  
+short HEAP_START_ADDRESS  
+short HEAP_END_ADDRESS  
+short KEYBOARD_ADDRESS  
+short NEWLINE_KEY  
+short BACKSPACE_KEY  
 
 Finally, it should be noted that the Java language does not allow the
 declaration of a method called "new" (such as the String.new and Array.new
